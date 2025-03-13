@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp3.ProdutoPage"
+             BindingContext="{x:Reference Produto}"
+             Title="ProdutoPage">
+    <VerticalStackLayout>
+        <HorizontalStackLayout>
+            <Label 
+                Text="Nome"
+                VerticalOptions="Center" 
+                HorizontalOptions="Start" />
+            <Label 
+                Text="{Binding Nome}"
+                FontSize="Large"
+                VerticalOptions="Start" 
+                HorizontalOptions="EndAndExpand" />
+        </HorizontalStackLayout>
+        <Label 
+            Text="Preço"
+            VerticalOptions="Start" 
+            HorizontalOptions="Start" />
+        <Label 
+            Text="{Binding Preco}"
+            FontSize="Large"
+            VerticalOptions="Start" 
+            HorizontalOptions="End" />
+        <Label 
+            Text="Categoria"
+            VerticalOptions="Start" 
+            HorizontalOptions="Start" />
+        <Label 
+            Text="{Binding Categoria}"
+            FontSize="Large"
+            VerticalOptions="Start" 
+            HorizontalOptions="End" />
+    </VerticalStackLayout>
+</ContentPage>
