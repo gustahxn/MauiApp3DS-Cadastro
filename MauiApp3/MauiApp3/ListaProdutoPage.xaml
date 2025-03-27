@@ -3,28 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MauiApp3"
              x:Class="MauiApp3.ListaProdutoPage"
-             Title="ListaProdutoPage">
-    <VerticalStackLayout>
-        <ListView x:Name="lstProduto">
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="local:Produto" >
-                    <ViewCell Tapped="ViewCell_Tapped">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="{Binding Nome}" Grid.Row="1" />
-                            <Label Text="{Binding Preco}" Grid.Row="2" />
-                            <Label Text="{Binding Categoria}" Grid.Row="0" />
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </VerticalStackLayout>
+             Title="Lista de Jogos"
+             BackgroundColor="#6A449B">
+
+    <ScrollView>
+        <VerticalStackLayout BackgroundColor="#6A449B" Padding="10">
+            <Frame BackgroundColor="#ffffff" CornerRadius="10" Padding="10" HasShadow="True">
+                <ListView x:Name="lstProduto" BackgroundColor="#6A449B"
+                          HasUnevenRows="True" SeparatorVisibility="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="local:Produto">
+                            <ViewCell Tapped="ViewCell_Tapped">
+                                <Frame BackgroundColor="#ffffff" CornerRadius="8" Padding="10" HasShadow="True" Margin="5">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="{Binding Nome}" Grid.Row="0" FontSize="16" FontAttributes="Bold" TextColor="#333" />
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
