@@ -16,11 +16,11 @@ namespace MauiApp3
         {
             Produto produto = new Produto();
 
-            produto.Nome = "Monster Hunter Wilds";
-            produto.Preco = 350;
-            produto.Categoria = "Acessorios";
-            produto.Plataforma = "PS/XBOX/PC";
-            produto.Ano = 2025;
+            produto.Nome = "Monitor 60hz";
+            produto.Preco = 570;
+            produto.Categoria = "Periféricos";
+            produto.Descricao = "Tela de 23 polegadas, resolução de 1920x1080, perfeito para o dia a dia!";
+            produto.Validade = new DateTime (2028, 10, 5);
 
             Navigation.PushAsync(new NewPage1() { BindingContext = produto });
         }
@@ -33,6 +33,11 @@ namespace MauiApp3
         private void btnListaProduto_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new ListaProdutoPage());
+        }
+
+        private void btnAdicionar_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Adicionar());
         }
     }
 

@@ -12,7 +12,11 @@
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
     <ShellContent
-    Title="Lista de Produtos"
-    ContentTemplate="{DataTemplate local:ListaProdutoPage}"
-    Route="ListaProdutoPage" />
+        Title="Lista de Produtos"
+        ContentTemplate="{DataTemplate local:ListaProdutoPage}"
+        Route="ListaProdutoPage" />
+    <ShellContent
+        Title="Cadastro a lista"
+        ContentTemplate="{DataTemplate local:Adicionar}"
+        Route="Adicionar" />
 </Shell>

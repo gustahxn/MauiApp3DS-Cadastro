@@ -18,8 +18,8 @@
 
             <Frame BackgroundColor="#ffffff" CornerRadius="10" Padding="15" HasShadow="True">
                 <HorizontalStackLayout Spacing="10" VerticalOptions="CenterAndExpand">
-                    <Label Text="Preço: R$" FontSize="Medium" FontAttributes="Bold" TextColor="#333"/>
-                    <Label Text="{Binding Preco}" FontSize="Medium" TextColor="#009688" />
+                    <Label Text="Preço: " FontSize="Medium" FontAttributes="Bold" TextColor="#333"/>
+                    <Label Text="{Binding PrecoFormatado}" FontSize="Medium" TextColor="#009688" />
                 </HorizontalStackLayout>
             </Frame>
 
@@ -32,15 +32,15 @@
 
             <Frame BackgroundColor="#ffffff" CornerRadius="10" Padding="15" HasShadow="True">
                 <HorizontalStackLayout Spacing="10" VerticalOptions="CenterAndExpand">
-                    <Label Text="Ano:" FontSize="Medium" FontAttributes="Bold" TextColor="#333"/>
-                    <Label Text="{Binding Ano}" FontSize="Medium" TextColor="#000" />
+                    <Label Text="Validade:" FontSize="Medium" FontAttributes="Bold" TextColor="#333"/>
+                    <Label Text="{Binding ValFormatada}" FontSize="Medium" TextColor="#000" />
                 </HorizontalStackLayout>
             </Frame>
 
-            <Frame BackgroundColor="#ffffff" CornerRadius="10" Padding="15" HasShadow="True">
+            <Frame BackgroundColor="#ffffff" CornerRadius="10" Padding="15" HasShadow="True" HeightRequest="100">
                 <HorizontalStackLayout Spacing="10" VerticalOptions="CenterAndExpand">
-                    <Label Text="Plataforma:" FontSize="Medium" FontAttributes="Bold" TextColor="#333"/>
-                    <Label Text="{Binding Plataforma}" FontSize="Medium" TextColor="#000" />
+                    <Label Text="Descrição:" FontSize="Medium" FontAttributes="Bold" TextColor="#333"/>
+                    <Label Text="{Binding Descricao}" FontSize="Small" TextColor="#000" />
                 </HorizontalStackLayout>
             </Frame>
 

@@ -1,0 +1,13 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp3.Adicionar"
+             Title="Adicionar Produto">
+    <VerticalStackLayout Padding="20">
+        <Entry x:Name="nomeEntry" Placeholder="Nome do Produto"/>
+        <Entry x:Name="precoEntry" Placeholder="Preço (Ex: 230,70 )" Keyboard="Numeric"/>
+        <Entry x:Name="categoriaEntry" Placeholder="Categoria"/>
+        <Entry x:Name="descricaoEntry" Placeholder="Descrição"/>
+        <Entry x:Name="validadeEntry" Placeholder="Validade (APENAS o ano)" Keyboard="Numeric"/>
+        <Button Text="Adicionar Produto" Clicked="AdicionarClicked"/>
+    </VerticalStackLayout>
+</ContentPage>

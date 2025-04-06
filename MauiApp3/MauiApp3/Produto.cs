@@ -1,41 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 
 namespace MauiApp3
 {
     internal class Produto
     {
-        public double Preco { get; set; }
-
         public string Nome { get; set; }
+
+        public double Preco { get; set; }
 
         public string Categoria { get; set; }
 
-        public string Plataforma { get; set; }
+        public string Descricao { get; set; }
 
-        public int Ano { get; set; }
+        public DateTime? Validade { get; set; }
 
-        public static List<Produto> Lista
+        public string ValFormatada => Validade?.ToString("dd/MM/yyyy") ?? "Sem validade";
+
+        public string PrecoFormatado => Preco.ToString("C", CultureInfo.GetCultureInfo("pt-BR"));
+
+        private static List<Produto> lista = new List<Produto>
         {
-            get
-            {
-                List<Produto> lista = new List<Produto>();
-                lista.Add(new Produto() { Nome = "God of War", Preco = 220, Categoria = "Ação", Plataforma = "PS4/PS5", Ano = 2018 });
-                lista.Add(new Produto() { Nome = "The Last of Us Part I", Preco = 250, Categoria = "Ação/Aventura", Plataforma = "PS4", Ano = 2020 });
-                lista.Add(new Produto() { Nome = "Elden Ring", Preco = 300, Categoria = "RPG", Plataforma = "PS5/Xbox/PC", Ano = 2022 });
-                lista.Add(new Produto() { Nome = "FIFA 23", Preco = 280, Categoria = "Esportes", Plataforma = "PS5/Xbox/PC", Ano = 2022 });
-                lista.Add(new Produto() { Nome = "Cyberpunk 2077", Preco = 270, Categoria = "RPG", Plataforma = "PS5/Xbox/PC", Ano = 2020 });
-                lista.Add(new Produto() { Nome = "Red Dead Redemption 2", Preco = 260, Categoria = "Ação/Aventura", Plataforma = "PS4/Xbox/PC", Ano = 2018 });
-                lista.Add(new Produto() { Nome = "Call of Duty: Modern Warfare II", Preco = 350, Categoria = "FPS", Plataforma = "PS5/Xbox/PC", Ano = 2022 });
-                lista.Add(new Produto() { Nome = "Minecraft", Preco = 150, Categoria = "Sandbox", Plataforma = "Multiplataforma", Ano = 2011 });
-                lista.Add(new Produto() { Nome = "Hollow Knight", Preco = 80, Categoria = "Metroidvania", Plataforma = "PS4/Xbox/PC/Switch", Ano = 2017 });
-                lista.Add(new Produto() { Nome = "Street Fighter 6", Preco = 280, Categoria = "Luta", Plataforma = "PS5/Xbox/PC", Ano = 2023 });
+            new Produto { Nome = "Cafeteira", Preco = 220, Categoria = "Eletrodoméstico", Descricao = "Máquina de preparar café em pequena escala", Validade = new DateTime(2031, 12, 31) },
+            new Produto { Nome = "Mouse", Preco = 60, Categoria = "Periféricos", Descricao = "Mouse simples de escritório, preparado para proporcionar uma experiência confortável", Validade = new DateTime(2027, 12, 31) }
+        };
 
-                return lista;
-            }
-        }
+        public static List<Produto> Lista => lista;
     }
 }

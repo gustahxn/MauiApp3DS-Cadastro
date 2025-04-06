@@ -9,18 +9,25 @@
             Padding="30"
             Spacing="35">
             <Button BackgroundColor="Black"
-                Text="Abrir jogo mais vendido no momento"
+                Text="Abrir produto mais vendido no momento"
                 FontAttributes="Bold"
                 TextColor="White"
                 x:Name="btnProduto"
                 Clicked="btnProduto_Clicked"
             />
             <Button BackgroundColor="Black"
-                Text="Abrir lista de jogos"
+                Text="Abrir lista de produtos"
                     FontAttributes="Bold"
                 TextColor="White"
                 x:Name="btnListaProduto"
                 Clicked="btnListaProduto_Clicked"
+            />
+            <Button BackgroundColor="Black"
+                 Text="+ Adicionar produto +"
+                 FontAttributes="Bold"
+                 TextColor="White"
+                 x:Name="btnAdicionar"
+                 Clicked="btnAdicionar_Clicked"
             />
             <Image
                 Source="https://s2.coinmarketcap.com/static/img/coins/200x200/12947.png"
