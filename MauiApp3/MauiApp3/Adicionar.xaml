@@ -4,10 +4,10 @@
              Title="Adicionar Produto">
     <VerticalStackLayout Padding="20">
         <Entry x:Name="nomeEntry" Placeholder="Nome do Produto"/>
-        <Entry x:Name="precoEntry" Placeholder="Preço (Ex: 230,70 )" Keyboard="Numeric"/>
+        <Entry x:Name="precoEntry" Placeholder="Preço (Ex: 230,70S)" Keyboard="Numeric"/>
         <Entry x:Name="categoriaEntry" Placeholder="Categoria"/>
         <Entry x:Name="descricaoEntry" Placeholder="Descrição"/>
-        <Entry x:Name="validadeEntry" Placeholder="Validade (APENAS o ano)" Keyboard="Numeric"/>
+        <DatePicker x:Name="validadeEntry" Format="dd/mm/yyyy" />
         <Button Text="Adicionar Produto" Clicked="AdicionarClicked"/>
     </VerticalStackLayout>
 </ContentPage>

@@ -2,6 +2,8 @@ namespace MauiApp3;
 
 public partial class Adicionar : ContentPage
 {
+    private DateTime? validade;
+
     public Adicionar()
     {
         InitializeComponent();
@@ -13,26 +15,13 @@ public partial class Adicionar : ContentPage
         string categoria = categoriaEntry.Text;
         string descricao = descricaoEntry.Text;
 
+        validade = validadeEntry.Date;
+
         if (!double.TryParse(precoEntry.Text, out double preco))
         {
             await DisplayAlert("Erro", "Preço inválido! Digite um número válido.", "OK");
             return;
         }
-
-        DateTime? validade = null;
-
-        if (!string.IsNullOrWhiteSpace(validadeEntry.Text))
-        {
-            if (int.TryParse(validadeEntry.Text, out int anoValidade) && anoValidade > DateTime.Now.Year)
-            {
-                validade = new DateTime(anoValidade, 12, 31);
-            }
-            else
-            {
-                await DisplayAlert("Erro", "Ano de validade inválido! Digite um ano SUPERIOR a 2025", "OK");
-            }
-        }
-
 
         Produto.Lista.Add(new Produto
         {
@@ -40,11 +29,11 @@ public partial class Adicionar : ContentPage
             Preco = preco,
             Categoria = categoria,
             Descricao = descricao,
-            Validade = validade 
+            Validade = validade
         });
-
 
         await DisplayAlert("Sucesso", "Produto adicionado com sucesso!", "OK");
         await Navigation.PopAsync();
     }
+
 }

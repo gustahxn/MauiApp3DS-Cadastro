@@ -1,22 +1,47 @@
-using MauiApp3;
-using System.Security.AccessControl;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Maui.Controls;
 
-namespace MauiApp3;
-
-public partial class ListaProdutoPage : ContentPage
+namespace MauiApp3
 {
-    public ListaProdutoPage()
+    public partial class ListaProdutoPage : ContentPage
     {
-        List<Produto> lista = Produto.Lista;
+        public ListaProdutoPage()
+        {
+            InitializeComponent();
+            lstProduto.ItemsSource = Produto.Lista.OrderBy(p => p.Validade).ToList();
+        }
 
-        InitializeComponent();
+        private void ViewCell_Tapped(object sender, EventArgs e)
+        {
+            if (sender is ViewCell viewCell && viewCell.BindingContext is Produto produto)
+            {
+                Navigation.PushAsync(new NewPage1 { BindingContext = produto });
+            }
+        }
 
-        lstProduto.ItemsSource = lista;
+        private void FiltrarPorCategoria(object sender, EventArgs e)
+        {
+            string categoriaSelecionada = filtroCategoriaPicker.SelectedItem?.ToString() ?? "Todas";
 
-    }
-    private void ViewCell_Tapped(object sender, EventArgs e)
-    {
+            if (categoriaSelecionada == "Todas")
+            {
+                lstProduto.ItemsSource = Produto.Lista.OrderBy(p => p.Validade).ToList();
+            }
+            else
+            {
+                lstProduto.ItemsSource = Produto.Lista
+                    .Where(p => p.Categoria == categoriaSelecionada)
+                    .OrderBy(p => p.Validade)
+                    .ToList();
+            }
+        }
+        protected override void OnAppearing()
 
-        Navigation.PushAsync(new NewPage1() { BindingContext = ((ViewCell)sender).BindingContext });
+        {
+            base.OnAppearing();
+            lstProduto.ItemsSource = Produto.Lista.OrderBy(p => p.Validade).ToList();
+        }
     }
 }
