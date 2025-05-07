@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Text.Json;
+using Microsoft.Maui.Storage;
 
 namespace MauiApp3
 {
@@ -11,6 +13,7 @@ namespace MauiApp3
         public string Categoria { get; set; }
         public double Preco { get; set; }
         public DateTime? Validade { get; set; }
+        public string? CaminhoImagem { get; set; }
         public string ValidadeFormatada => Validade?.ToString("dd/MM/yyyy");
 
         public bool EstaVencido => Validade.HasValue && Validade.Value.Date < DateTime.Now.Date;

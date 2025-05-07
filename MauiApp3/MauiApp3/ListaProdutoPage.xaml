@@ -27,14 +27,14 @@
                 </Picker>
             </Frame>
 
-            <ListView x:Name="lstProduto"
+            <ListView x:Name="lstProduto" ItemTapped="OnItemTapped"
                       HasUnevenRows="True"
                       BackgroundColor="Transparent"
                       SeparatorVisibility="None"
                       Margin="0">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell Tapped="ViewCell_Tapped">
+                        <ViewCell>
                             <Frame BackgroundColor="#333"
                                    CornerRadius="12"
                                    Padding="15"
@@ -46,6 +46,7 @@
                                            FontSize="20"
                                            FontAttributes="Bold"
                                            TextColor="White" />
+                                    <Image Source="{Binding CaminhoImagem}" HeightRequest="100" WidthRequest="100"/>
 
                                     <Label Text="{Binding Descricao}"
                                            FontSize="16"
@@ -74,14 +75,15 @@
                                             </DataTrigger>
                                         </Label.Triggers>
                                     </Label>
-
                                 </VerticalStackLayout>
                             </Frame>
+                            
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
+            <Label x:Name="resumoLabel" FontSize="16" FontAttributes="Bold" Margin="10,10"/>
+            <Label x:Name="AlertaLabel" TextColor="Red" FontAttributes="Bold" Margin="10"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

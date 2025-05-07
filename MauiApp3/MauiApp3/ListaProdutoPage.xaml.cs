@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
+using Microsoft.Maui.Storage;
 using Microsoft.Maui.Controls;
 
 namespace MauiApp3
@@ -36,12 +38,80 @@ namespace MauiApp3
                     .OrderBy(p => p.Validade)
                     .ToList();
             }
-        }
-        protected override void OnAppearing()
 
+            AtualizarResumo();
+        }
+
+        protected override void OnAppearing()
         {
             base.OnAppearing();
-            lstProduto.ItemsSource = Produto.Lista.OrderBy(p => p.Validade).ToList();
+
+            var produtos = Produto.Lista.OrderBy(p => p.Validade).ToList();
+            lstProduto.ItemsSource = produtos;
+
+            AtualizarResumo();
+
+            var hoje = DateTime.Today;
+            var vencidos = produtos.Where(p => p.Validade.HasValue && p.Validade.Value < hoje).ToList();
+            var proximos = produtos.Where(p => p.Validade.HasValue && p.Validade.Value <= hoje.AddDays(3) && p.Validade.Value >= hoje).ToList();
+
+            if (vencidos.Any() || proximos.Any())
+            {
+                AlertaLabel.Text = $" Atenção: {vencidos.Count} vencido(s), {proximos.Count} prestes a vencer!";
+            }
+            else
+            {
+                AlertaLabel.Text = string.Empty;
+            }
         }
+
+
+        private async void OnItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item is Produto produto)
+            {
+                bool confirmar = await DisplayAlert(
+                    "Remover Produto",
+                    $"Deseja remover o produto \"{produto.Nome}\"?",
+                    "Sim", "Não");
+
+                if (confirmar)
+                {
+                    Produto.Lista.Remove(produto);
+                    ProdutoStorage.SalvarProdutos(Produto.Lista);
+                    lstProduto.ItemsSource = Produto.Lista.OrderBy(p => p.Validade).ToList();
+                    AtualizarResumo();
+                }
+            }
+        }
+        private void AtualizarResumo()
+        {
+            var produtos = lstProduto.ItemsSource as List<Produto>;
+
+            int quantidade = produtos?.Count ?? 0;
+            double total = produtos?.Sum(p => p.Preco) ?? 0;
+
+            resumoLabel.Text = $"Total: {quantidade} produto(s) - Valor: R$ {total:F2}";
+        }
+
+        public static class ProdutoStorage
+        {
+            const string ProdutosKey = "ProdutosSalvos";
+
+            public static void SalvarProdutos(List<Produto> produtos)
+            {
+                string json = JsonSerializer.Serialize(produtos);
+                Preferences.Set(ProdutosKey, json);
+            }
+
+            public static List<Produto> CarregarProdutos()
+            {
+                string json = Preferences.Get(ProdutosKey, string.Empty);
+                return string.IsNullOrEmpty(json) ? new List<Produto>() :
+                    JsonSerializer.Deserialize<List<Produto>>(json) ?? new List<Produto>();
+            }
+        }
+
     }
 }
+
