@@ -1,15 +1,18 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp3.Adicionar"
-             Title="Adicionar Produto">
-    <VerticalStackLayout Padding="20">
-        <Entry x:Name="nomeEntry" Placeholder="Nome do Produto"/>
-        <Entry x:Name="precoEntry" Placeholder="Preço (Ex: 230,70S)" Keyboard="Numeric"/>
-        <Entry x:Name="categoriaEntry" Placeholder="Categoria"/>
-        <Entry x:Name="descricaoEntry" Placeholder="Descrição"/>
-        <DatePicker x:Name="validadeEntry" Format="dd/mm/yyyy" />
-        <Button Text="Selecionar Imagem" Clicked="SelecionarImagem_Clicked"/>
-        <Image x:Name="previewImagem" HeightRequest="100" WidthRequest="100"/>
-        <Button Text="Adicionar Produto" Clicked="AdicionarClicked"/>
+             Title="Adicionar Produto"
+             BackgroundColor="White">
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <Entry x:Name="nomeEntry" Placeholder="Nome do Produto" BackgroundColor="#F2F2F2" TextColor="Black"/>
+        <Entry x:Name="precoEntry" Placeholder="Preço (Ex: 230,70S)" Keyboard="Numeric" BackgroundColor="#F2F2F2" TextColor="Black"/>
+        <Entry x:Name="categoriaEntry" Placeholder="Categoria" BackgroundColor="#F2F2F2" TextColor="Black"/>
+        <Entry x:Name="descricaoEntry" Placeholder="Descrição" BackgroundColor="#F2F2F2" TextColor="Black"/>
+        <DatePicker x:Name="validadeEntry" Format="dd/MM/yyyy" BackgroundColor="#F2F2F2" TextColor="Black"/>
+        <Button Text="Selecionar Imagem" Clicked="SelecionarImagem_Clicked"
+                BackgroundColor="#001F3F" TextColor="White"/>
+        <Image x:Name="previewImagem" HeightRequest="100" WidthRequest="100" BackgroundColor="#F2F2F2"/>
+        <Button Text="Adicionar Produto" Clicked="AdicionarClicked"
+                BackgroundColor="#001F3F" TextColor="White"/>
     </VerticalStackLayout>
 </ContentPage>

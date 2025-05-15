@@ -7,7 +7,7 @@
              BackgroundColor="#85929e">
 
     <ScrollView>
-        <VerticalStackLayout BackgroundColor="#6A449B" Padding="20" Spacing="15">
+        <VerticalStackLayout BackgroundColor="#001F3F" Padding="20" Spacing="15">
 
             <Frame BackgroundColor="#ffffff" CornerRadius="10" Padding="15" HasShadow="True">
                 <HorizontalStackLayout Spacing="10" VerticalOptions="CenterAndExpand">
